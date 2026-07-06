@@ -107,4 +107,4 @@
 	NodeJS can do asynchronous with help of libuv.
 	libuv can do File access, DB access, API, TImer and more (JS offload the Asynchronous task to libuv)
 
-	![Project Diagram](images/libuv.jpg)
+	![Libuv_lifeCycle](images/libuv.jpg)
