@@ -74,9 +74,11 @@
 		Used in node 
 
 			module.exports = ...
+			in package.json { "type": "commonjs" } - no need to use but if we use package.json so we can use type
 
 	- MJS (ECMAScript Modules) - import and export - by default used in react, angular, next js - newer way - ASynchronous - Non strict mode
 
 		import and export
+		in package.json { "type": "module" }
 
 # 	
