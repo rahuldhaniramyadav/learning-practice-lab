@@ -20,6 +20,28 @@
 
 	V8 can be emebedded on any c++ application. - It is invention of node JS
 
+	Server - It indicate as software or hadware as server, handle the request server likes http server, proxyserver, webserver etc.
+
+## V8
+
+	- JS uses both intepreter and compiled (JIT)
+
+	**How code is excuted**
+
+		- program (code) -> PARSING [ -> Lexical Analysis (Tokenization) - Syntax Analysis - Token converted into AST (Abstratc syntax tree) ]
+
+		- AST -> Ignition (used by google) INTERPRETER (run line by line) - Byte code - Execution
+
+		JS uses turbofan compiler it comes after the INTERPRETER for the HOT code (when the piece of code run again and again) so tubofan compile the code -> optimised machine code - execution
+
+		Deoptimised the code for some code user passes some different argument which can't be run by compiler so it again back to interpreter 
+
+		Inline caching - speed up object property lookups
+
+		GARBAGE COLLECTION - automatic memory management process, Uses mark and sweep algorithm, many other algorithm
+
+		JIT - FROM AST TO EXECUTION
+
 ## Souce code
 
 	Most of programming language uses c++/c code for communicating the OS, High level language (JS) it is compile into machine level code which support OS. 
@@ -91,6 +113,10 @@
 
 	- How are variable and function can't access in different file becaue of IIFE
 
+## Blocking main thread
+
+	- sync methods, complex regex, camplex calculations/loops, heavy json objects
+
 ## What happen when we use require 
 
 	- Resolving the module (from where the data is coming like .js/ .json)
@@ -107,4 +133,25 @@
 	NodeJS can do asynchronous with help of libuv.
 	libuv can do File access, DB access, API, TImer and more (JS offload the Asynchronous task to libuv)
 
-	![Libuv_lifeCycle](images/libuv.jpg)
+	libuv consist of eventloop, callback queue, thread pool etc.
+
+	Eventloop - it check call stack and callback queue, and manage the correct time and correct order of callback queue
+	callback queue - All the asyn operation after execution it sits here 
+
+	Thread pool - It comes on picture when we want to run async operation like read file, crypto calculation, etc. 
+		Thread is small entity for run/execute the operation, 
+		UV_THREADPOOL_SIZE = 4
+
+		if we do aync operation more than 4 operations so 5th onwards operations has wait for the next thread to be free, We can increase and decrease the thread.
+
+		OS - epoll(linux it uses red black tree), kqueue (MacOS) - Scalable I/O event notification mechanisms - operated it on O(1)
+
+		For every connection we dont need new thread with epoll, kqueue on OS level it manage with the descriptor(it manage all file descriptor socker connections), which notify the libuv when something event occurs.
+
+	Timer (setTimeout (it uses minheap data structure), setInterval) -> Pending callback -> Idle, prepare ->  Poll (I/O, incoming connection, fs, crypto, https.gte) -> Check (setImmediate) -> close (closing connection) - call again Timer and loop
+
+	NOTE: **Before each phase there is other cycle which excuted process.nextTick() -> promise callback and repeat**
+	*It is semiinfinite loop, Event loop sit on poll phase once it start, So new loop start from poll phase and go to Check and so on..*
+
+	![Libuv_EventLoop_lifeCycle](images/libuv.jpg)
+
