@@ -35,23 +35,48 @@
 		- nvm - node verion manager (with command)
 		- prebuild installer ...
 
-		- We have installed node via docker we need to start docker desktop and create a container
+		- I have installed node via docker we need to start docker desktop and create a container
 
 	- Verify
 
 		- node -v = version of node else need to install node
-		- npm -v - it is package manager got installed automatically 
-
+		- npm -v - it is package manager got installed automatically on installation of node
 
 # Node REPL (READ EVALUATE, PRINT, LOOP)
 
 	It is given a program prompt we can run the nodejs code something like console of browser.
 	type node and try the code like simple calculation and all
 
-# require and module.exports is use to execute multiple module file from single entry points
+# Global Object
 
-	- CJS - module.exports and require, by default in nodeJS - older way - Synchronous - Non strict mode
+	global - console.log(global) - It is nodeJS part not a V8 part, it is samilar like this, window, frames and self of browser
 
-	- MJS - import and export - by default used in react, angular, next js - newer way - ASynchronous - Non strict mode
+	console.log(this) - it prints in empty object but when use REPL it point to the global object
+
+	JS community decided some common global object they released 2018/2049 -  globalThis
+
+# require and module.exports is use to execute multiple module (files) from single entry points
+
+	- require - we can un the file but we can't access variable and functions (Modules protectes thier variables and functions from leaking)
+	- we can use exports and allow varible and function to be use in other file with getting in it.
+
+		=> module.exports = <varaible>|<function> - Module file
+		=> const data = require('./<filename>) - Base file 
+
+	Why 
+
+		- Module has is private space and if we allow other module to access so it will be problem with thier private space.
+
+	There is 2 types of module systems 	
+
+	- CJS (Common JS) - module.exports and require, by default in nodeJS - older way - Synchronous - Non strict mode
+
+		Used in node 
+
+			module.exports = ...
+
+	- MJS (ECMAScript Modules) - import and export - by default used in react, angular, next js - newer way - ASynchronous - Non strict mode
+
+		import and export
 
 # 	
