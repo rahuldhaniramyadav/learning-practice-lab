@@ -1,17 +1,5 @@
-
-// const calculateSum = require("./sum");
-// const {calculateSum} = require("./calculate/sum");
-// const {calculateSubtract} = require("./calculate/subtract");
-
-const {calculateSum, calculateSubtract} = require("./calculate");
-
-// import {calculateSum, x} from "./sum.js";
-
-var a = 10;
-var b = 20;
-
-console.log(a+b);
-console.log(calculateSum(a, b)); 
-console.log(calculateSubtract(a, b));
-
-// console.log(globalThis); // same as global
+// const { calculateSum } = require('./apprequire'); // first this file code excuted
+const { x, calculateSum } = require('./apprequire'); 
+console.log(calculateSum(4, 5));
+console.log("This is APP JS ");
+console.log(x);
