@@ -2,6 +2,7 @@
   "dependencies": {
     "crypto": "^1.0.1",
     "fs": "^0.0.1-security",
-    "https": "^1.0.0"
+    "https": "^1.0.0",
+    "mongodb": "^7.4.0"
   }
 }

@@ -22,6 +22,13 @@
 
 	Server - It indicate as software or hadware as server, handle the request server likes http server, proxyserver, webserver etc.
 
+	There are different rules like FTP, SMTP, HTTP etc
+
+	Web - anyone can connect with anyone
+	TCP/IP - client and server communication with TCP/IP protocol (set of rules which is defined for communication)
+
+	web socket - connection remain for some time between client and server, as opening and closing connection is headache
+
 ## V8
 
 	- JS uses both intepreter and compiled (JIT)
@@ -155,3 +162,24 @@
 
 	![Libuv_EventLoop_lifeCycle](images/libuv.jpg)
 
+## Database - Organized collection of data, structured way to store data
+
+	DBMS - It used to manage, captured and analyzed the database make a connection between user and db.
+
+	RDBMS (SQL, PostgreSQL) - Structured, Fixed scehma, Tough horizontal, read heavy, banking
+	NoSQL (MongoDB) - Unstrcutured, FLexible, Easy to scale, real time distibuted, social media 
+
+	NOSQL (MongoDB) - uses document DB other NOSQL DB likes key value DB, graph db and multimodel
+
+		Collections (kind of table), Documents ( {...}) and Fields
+
+	## Installtion of mongoDB 
+
+	1 . Install with packager - it is managed by self
+	2. Managed db on cloud
+
+		Community - stored in cloud, Free to use limited
+		Enterprises - Managed by mongo db, as per plan
+
+	Mongoose library for the mongodb - it is good way, easy and flexible
+	
