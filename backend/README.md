@@ -112,8 +112,8 @@
 
 	## Routes 
 
-		By default on browser we use the get method only
-		There are different routes with special regex we can use in routing handler like ?, +, * etc   
+		By default on browser it only support GET method
+		There are different routes with special regex, Wildcards in routing handler like ?, +, * etc   
 
 
 
