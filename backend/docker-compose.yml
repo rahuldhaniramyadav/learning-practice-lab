@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  app:
+    # 1. Pulls the official lightweight Node image directly
+    image: node:20-alpine
+    container_name: node_dev_app
+    ports:
+      - "3000:3000"
+    working_dir: /usr/src/app
+    volumes:
+      # 2. Mounts your current folder code into the container
+      - .:/usr/src/app
+      # 3. Keeps container node_modules independent from your local machine
+      - /usr/src/app/node_modules
+    # 4. Chains commands: Installs packages inside the container, then runs nodemon
+    command: >
+      sh -c "npm install && 
+             npx nodemon -L app.js"
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
