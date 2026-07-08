@@ -8,7 +8,7 @@ createApp.use("/rahul",(req, res) => {
     console.log("Hey hii");
 });
 
-createApp.use("/boss",(req, res) => {
+createApp.use("/boss",(req, res) => { // it is route with req & res, if anythig is matched it will execute
     res.send("Hello from BOSS server");
     console.log("Hey hii");
 });
