@@ -113,7 +113,21 @@
 	## Routes 
 
 		By default on browser it only support GET method
-		There are different routes with special regex, Wildcards in routing handler like ?, +, * etc   
+		There are different routes with special regex, Wildcards in routing handler like ?, +, * etc 
+
+		If server dont send - res.send() the rquest will be continuous processing phase and it will stop on the server timeout, Always handle a request with appropriate return.
+
+			res.send() and next() ordering play important a role
+
+		Route handlers consist of 3 parameter like req, res and next (use to manget the multiple route handler for single route)
+
+		.use - matched the paths as prefix and ignore the http method - /rahul (/rahul/new, /rahul/create, etc)
+		.all - matches exact paths and applies to all http methods - /rahul (only /rahul not allowed /rahul/new) 
+		.get, .post etc  - will match exact route like .all
+
+		Middleware - when we create route to handle common authorization with login or token, logging and monitoring etc in route handle
+
+			In middleware work as api gateway in the webserver as we can check act accordingly
 
 
 
