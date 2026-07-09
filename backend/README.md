@@ -129,6 +129,9 @@
 
 			In middleware work as api gateway in the webserver as we can check act accordingly
 
+		error handling - always use try and catch to handle the error gracefully also we can use the / route at the end for handling all the error grancefully
+
+			use("/", (err, req, res, next) - order of the parameter matters, if only one parater will be treated as req, if 2 req and res, if 3 then req, res and next.
 
 
 	
