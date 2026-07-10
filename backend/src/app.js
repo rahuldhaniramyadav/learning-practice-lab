@@ -1,5 +1,5 @@
 const express = require('express'); // it will return a createApplication function from node_modules\express\lib\express.js
-
+require('./config/database'); // backend\src\config\database,js
 const createApp = express();
 
 // if i use below route every route of /rahul with all method will call this handler only
