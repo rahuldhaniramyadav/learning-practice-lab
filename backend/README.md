@@ -133,10 +133,6 @@
 
 			use("/", (err, req, res, next) - order of the parameter matters, if only one parater will be treated as req, if 2 req and res, if 3 then req, res and next.
 
+	For the mongodb we use mongoose npm library, it is standard, it give some boiler plate code
 
-	
-	
-		
-
-
-
+		Only listen server when database is connection sucessfully 			
