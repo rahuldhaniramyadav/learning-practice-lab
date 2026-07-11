@@ -1,58 +1,33 @@
-const express = require('express'); // it will return a createApplication function from node_modules\express\lib\express.js
-require('./config/database'); // backend\src\config\database,js
-const createApp = express();
+const express = require('express');
+const databaseConn = require('./config/database');
+const User = require('./database/model/user');
+require('dotenv').config();
 
-// if i use below route every route of /rahul with all method will call this handler only
-// createApp.use("/rahul",(req, res) => {
-//     res.send("This http GET method");
-// });
+const appServer = express();
 
-// handle the file path
-// createApp.get("/rahul/*filepath",(req, res) => {
-//     // requesr url: http://localhost:5450/rahul/new.txt
-//     // response: new.txt
-//     res.send(`File: ${req.params.filepath.join('/')}`);
-// });
-
-// fetching the query
-createApp.get("/rahul/",(req, res) => {
-    console.log(req.query);
-    // requesr url: http://localhost:5450/rahul/?username=R&age=20
-    // response: [Object: null prototype] { username: 'R', age: '20' }
+appServer.use('/', (req, res) => {
+    res.send("END!!");
+});
+appServer.post('/signup', (req, res) => {
+    const userDocument = {
+        firstName: "Rahul",
+        lastName: "Yadav",
+        email: "a@a.com",
+        age: 30,
+        gender: "male"
+    };
+    try{
+        User.save(userDocument);
+        res.send("user data send successfully");
+    } catch(e) {
+        console.log('Something went wrong, Please try again!');
+    }
 });
 
-// fetching the params
-createApp.get("/rahul/:userId/:userName",(req, res) => {
-    console.log(req.params);
-    // requesr url: http://localhost:5450/rahul/101/Test
-    // response: [Object: null prototype] { userId: '101', userName: 'Test' }
-});
-
-createApp.get("/rahul*ya",(req, res) => {
-    console.log("We can add anything between rahul and ya");
-    // requesr url: http://localhost:5450/rahul123456789ya
-});
-
-// createApp.get("/rahul",(req, res) => {
-//     res.send("This http GET method");
-// });
-
-// createApp.post("/rahul",(req, res) => {
-//     res.send("This http POST method");
-// });
-
-// createApp.put("/rahul",(req, res) => {
-//     res.send("This http PUT method");
-// });
-
-// createApp.patch("/rahul",(req, res) => {
-//     res.send("This http PATCH method");
-// });
-
-// createApp.delete("/rahul",(req, res) => {
-//     res.send("This http DELETE method");
-// });
-
-createApp.listen(5450, () =>  {
-    console.log("Server is running");
-});
+databaseConn().then(() => {
+    appServer.listen(process.env.PORT, () => {
+        console.log("server started on port 5450")
+    })
+}).catch((err) => {
+    console.log("there is some connection issue", err);
+})
