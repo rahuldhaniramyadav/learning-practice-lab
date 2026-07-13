@@ -135,4 +135,8 @@
 
 	For the mongodb we use mongoose npm library, it is standard, it give some boiler plate code
 
-		Only listen server when database is connection sucessfully 			
+		Only listen server when database is connection sucessfully
+
+	for reading a json data express given express-json package but now latest version support json in express library so no new package, for xml, html might be needed some parser.
+
+	created all the httml method and update the code accordingly
