@@ -106,6 +106,13 @@ appServer.delete('/profile', async (req, res) => {
     }
 });
 
+// how we can pass header option, Used by browsers to check CORS permissions or allowed methods
+appServer.options('/', (req, res) => {
+    res.header('Allow', 'GET, POST, OPTIONS');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+    res.send(200)
+});
+
 databaseConn().then(() => {
     appServer.listen(process.env.PORT, () => {
         console.log("server started on port 5450")
