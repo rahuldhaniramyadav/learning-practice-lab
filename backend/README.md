@@ -95,12 +95,16 @@
 		> npm i -g nodemon // -g used to maintain package on system level instead of project level 
 		> nodemon -L src/app.js // using -L as the docker container unable to track the filesystem events often
 
-	expressjs - light weight web framework based on nodejs, make the routing, communication easier and faster
+	expressjs - light weight web framework based on nodejs (it is bulit top of nodejs, whatever application support nodejs there we can run express), make the routing, communication easier and faster
 
 		Like when we create a server with expressjs we can eaily and fastly create server without proving much information like (header, type, body etc.)
+
+		express can do manything like - Routing, Middleware, Request/Response helpers, Error handling, static file serving
 	
 	
-	installed express for the web server, listen to custom port and create different route 
+	installed express for the web server, listen to custom port and create different route
+
+			app.use(()=>{}) // this will work for all the incoming request 
 			createApp.use("/boss",(req, res) => {res.send("Hello from BOSS server");});
 				here anything comes after the /boss/new, /boss/11 it will execute wit work as special charcter, here squenence of code is matter
 
@@ -139,4 +143,15 @@
 
 	for reading a json data express given express-json package but now latest version support json in express library so no new package, for xml, html might be needed some parser.
 
-	created all the httml method and update the code accordingly
+	created all the html method and update the code accordingly
+	Also added the try and catch module
+
+## Concepts and Features
+
+	JS Object -  JS data strcture, store and manipulate, key may or may not be in double quote, JSON.stringify() - convert JS object into JSON
+	JSON - String format, used to exchange, key must be double quotes, JSON.parse() - converts JSON to JS object
+	 
+	Data sanitization and schema validation
+
+		
+
