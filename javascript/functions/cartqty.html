@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart Quantity</title>
+</head>
+<body>
+  <button onclick="
+    console.log(cartQty);
+    ">Show Cart Quantity</button>
+  <button onclick="updateQty(2, '+');">+2</button>
+  <button onclick="updateQty(5, '+');">+5</button>
+  <button onclick="updateQty(7, '+');">+7</button>
+  <button onclick="updateQty(5, '-');">-5</button>
+  <script>
+    let cartQty=0;
+    let finalQty = 0;
+    function updateQty(qty, opeartion) {
+      if (opeartion === '+') {
+        if (cartQty + qty > 10) {
+          alert('The cart is full')
+        } else {
+          cartQty += qty;
+        }
+      } else if (opeartion === '-') {
+        if (cartQty - qty < 0) {
+          alert('Not enough items in the cart');
+        } else {
+          cartQty -= qty;
+        }
+      }
+      console.log(cartQty);
+    }
+  </script>
+</body>
+</html>

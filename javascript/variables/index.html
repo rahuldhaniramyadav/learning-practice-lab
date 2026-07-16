@@ -1,0 +1,25 @@
+<!-- Session practice -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart Quantity</title>
+  </head>
+  <body>
+    <button onclick="console.log(`Cart Quantity: ${cartQuantity}`);">Show Quantity</button>
+    <button onclick="cartQuantity++;console.log(`Cart Quantity: ${cartQuantity}`);">Add To Cart</button>
+    <button onclick="cartQuantity += 2;console.log(`Cart Quantity: ${cartQuantity}`);">+2</button>
+    <button onclick="cartQuantity += 3;console.log(`Cart Quantity: ${cartQuantity}`);">+3</button>
+    <button onclick="cartQuantity += 4;console.log(`Cart Quantity: ${cartQuantity}`);">+4</button>
+    <button onclick="cartQuantity += 5;console.log(`Cart Quantity: ${cartQuantity}`);">+5</button>
+    <button onclick="cartQuantity -= 1;console.log(`removed one item form cart now cart quantity is: ${cartQuantity}`);">Remove from cart</button>
+    <button onclick="cartQuantity -= 2;console.log(`removed one item form cart now cart quantity is: ${cartQuantity}`);">-2</button> <!--cartQuantity = cartQuantity - 2;-->
+    <button onclick="cartQuantity -= 3;console.log(`removed one item form cart now cart quantity is: ${cartQuantity}`);">-3</button><!--cartQuantity = cartQuantity - 3;-->
+    <button onclick="cartQuantity = 0;console.log(`Cart was reset: ${cartQuantity}`);">Reset Cart</button>
+    <script>
+      let cartQuantity = 0;
+    </script>
+  </body>
+</html>

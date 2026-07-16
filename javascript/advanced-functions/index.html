@@ -1,0 +1,108 @@
+<!-- Session practice -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Function</title>
+  </head>
+  <body>
+    <!-- <button onclick="updateButton();">Button 1</button>
+    <button>Button 2</button>
+    <button onclick="addedToCart();">Add to Cart</button>
+    <p class="display-msg"></p> -->
+
+    <!-- <button onclick="updateMsg('add');">Add</button>
+    <button onclick="updateMsg('remove');">remove</button> -->
+
+    <button class="btn-addtocart">Add to Cart</button>
+    <p class="display-msg"></p>
+    <script>
+      document.querySelector(".btn-addtocart").addEventListener("click", () => {
+        const pElement = document.querySelector(".display-msg");
+        pElement.innerHTML = 'Added';
+        setTimeout(() => {
+          pElement.innerHTML = '';
+        }, 2000 )
+      })
+      // let messages = 0;
+      // function updateMsg(type){
+      //   if (type === 'remove') {
+      //     if (messages <= 0) {
+      //       return document.title = `App`;
+      //     } else {
+      //       messages -= 1;
+      //     }
+      //   } else {
+      //     messages += 1;
+      //   }
+      //   // setInterval(function() {
+      //     document.title = `New Messages(${messages})`;
+      //     // console.log("AA", i);
+      //   // }, 1000);
+      // }
+      // setInterval(function() {
+      //   messages += 1;
+      //   document.title = `New Messages(${i++})`;
+      //   console.log("AA", i);
+      // }, 1000);
+      // let twoSecondTimer;
+      // function addedToCart() {
+      //   clearTimeout(twoSecondTimer);
+      //   const pElement = document.querySelector(".display-msg");
+      //   pElement.innerHTML = 'Added';
+      //   twoSecondTimer = setTimeout(() => {
+      //     pElement.innerHTML = '';
+      //   }, 2000 );
+      // }
+      // let i = 0;
+      // setInterval(function() {
+      //   document.title = `New Messages(${i++})`;
+      //   console.log("AA", i);
+      // }, 1000);
+
+      // const allBtn = document.querySelectorAll('button');
+      // allBtn.forEach((val, ind) => {
+      //   val.addEventListener("click", () => {
+      //     console.log(ind);
+      //   })
+      //   val.addEventListener("click", () => {
+      //     console.log("CLICKED");
+      //   })
+      // });
+
+      // function updateButton() {
+      //   document.querySelector('button').innerHTML = 'Loading...';
+      //   setTimeout(() => {
+      //     document.querySelector('button').innerHTML = 'Finished!';
+      //     console.log('Finished!');
+      //   }, 1000)
+      // }
+
+    //  function greet() {
+    //   console.log("Hello");
+    //  }
+    //  greet(); // running the functions
+
+    //  const function1 = function greet() {
+    //   console.log("Welcome");
+    // }
+
+    // console.log(function1);
+    // console.log(typeof function1);
+    // function1();
+    // function run(para) { 
+    //   para();
+    // }
+    // run(function(){console.log("Hello")}); //passing an function into another function, the fucntion is passing in is called callback function
+
+    // setTimeout(function(){ //it is build in fucntion, it 2 paramere one is fucntion and when to run
+    //   console.log("A");
+    // }, 2000);
+
+    // console.log("run"); // it run first after 3 second setTimeout will run that means it is asychronous code
+
+    </script>
+  </body>
+</html>

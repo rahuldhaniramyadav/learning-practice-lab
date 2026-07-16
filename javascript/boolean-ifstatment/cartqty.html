@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart Quantity</title>
+</head>
+<body>
+  <button onclick="
+    console.log(cartQty);
+    ">Show Cart Quantity</button>
+  <button onclick="
+    if (cartQty + 2 > 10) {
+      alert('The cart is full')
+    } else {
+      cartQty += 2;
+      console.log('2 Added');
+    }
+    console.log(cartQty);
+  ">+2</button>
+  <button onclick="
+  if (cartQty + 5 > 10) {
+    alert('The cart is full')
+  } else {
+    cartQty += 5;
+    console.log('5 Added');
+  }
+  console.log(cartQty);">+5
+  </button>
+  <button onclick="
+  if (cartQty + 7 > 10) {
+    alert('The cart is full')
+  } else {
+    cartQty += 7;
+    console.log('7 Added');
+  }
+  console.log(cartQty);">+7</button>
+  <button onclick="
+    if (cartQty - 5 < 0) {
+      cartQty = 0;
+      alert('Not enough items in the cart');    
+    } else {
+      cartQty -= 5;
+    }
+  console.log(cartQty);">-5</button>
+  <script>
+    let cartQty=0;
+  </script>
+</body>
+</html>

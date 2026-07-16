@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amz Shipping </title>
+</head>
+<body>
+  <p>Ama Shipping element</p>
+  <p>Order under $40 = +10 shipping</p>
+  <p>Order over $40 = FREEE shipping</p>
+  <input type="text" class="input-amount" onkeydown="
+  if (event.key == 'Enter') {
+    calculateShipping();
+  }
+  " />
+  <p class="final-order-amount"></p>
+  <button onclick="calculateShipping();">Calculate</button>
+  <script>
+    function calculateShipping(){
+      const inputVal = Number(document.querySelector('.input-amount').value);
+      if (inputVal < 40) {
+        cost = inputVal + 10;
+        document.querySelector(".final-order-amount").innerText = `$${cost}`;
+      } else {
+        document.querySelector(".final-order-amount").innerText = `$${inputVal}`;
+      }
+    }
+  </script>
+</body>
+</html>

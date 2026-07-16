@@ -1,0 +1,29 @@
+<!-- Session practice -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Oriented programming</title>
+  </head>
+  <body>
+    <script>
+      function a() {
+  console.log(this); // referred to window object
+}
+a();
+a.call("AAAA");  // now it will print String {'AAAA'}
+
+function b(param1) {
+  console.log(this); // referred to window object
+}
+b.call("AAAA", param1);  // now it will print String {'AAAA'}
+
+const c = () => {
+  console.log(this); // it has same value as outside the arrow function
+}
+c();
+    </script>
+  </body>
+</html>

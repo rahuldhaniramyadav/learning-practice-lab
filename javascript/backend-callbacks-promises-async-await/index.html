@@ -1,0 +1,27 @@
+<!-- Session practice -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backend-callbacks-promises-async-await</title>
+  </head>
+  <body>
+    <script>
+      const req = new XMLHttpRequest();
+      req.addEventListener("load", () => {
+        // GET - get some information from the server 
+        // URL - Uniform Resouce Locator 
+        req.response(); // it take some time to generate the response tos olve this on top we can use listner 
+      })
+      req.open('GET', 'https://www.google.co.in/'); 
+      req.send(); // it shwoing CORS
+      // GET - get some information from the server 
+      // URL - Uniform Resouce Locator 
+      // req.open('GET', 'https://www.google.co.in/'); 
+      // req.send(); // it shwoing CORS
+      // req.response(); // it take some time to generate the response tos olve this on top we can use listner 
+    </script> 
+  </body>
+</html>
