@@ -1,0 +1,56 @@
+Referred - https://www.postgresql.org/download/linux/ubuntu/
+
+PostgreSQL
+
+	PostgreSQL is available in all Ubuntu versions by default
+
+	> sudo apt install postgresql
+
+
+	Automated Repository Configuration
+
+	> sudo apt install -y postgresql-common
+	> sudo /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh
+
+	Check the status 
+
+	> sudo systemctl status postgresql
+
+	If it's not running 
+
+	> sudo systemctl enable postgresql
+
+	Access the postgress with postgress user 
+
+	> sudo -u postgres psql
+
+	Set/Change the password 
+
+	> ALTER USER postgres PASSWORD 'your_secure_password';
+
+	if you want your existing user will be access your postgresql 
+
+	Create a matching PostgreSQL Role
+
+	Log in as the admin and create a role that matches the Linux username:
+
+	sudo -u postgres psql
+	# Inside psql:
+
+	> CREATE ROLE your_linux_username WITH LOGIN;
+
+	CREATE ROLE
+
+	> CREATE DATABASE your_linux_username OWNER your_linux_username;
+	
+	Database will be created with the name of your udername and owner will be same name 
+
+	Accessing the Database
+
+	> psql
+
+		# Or log in to a specific database
+
+	> psql -d my_app_db
+
+	
