@@ -1,3 +1,13 @@
+# Event-driven programing
+
+	### Event - Any action alert (any user actions, system notification)
+	### Event Emitter - The manage the event and trigger specific action
+
+	
+	## Buffer class 
+
+		reading and writing data in form of binary format for communication
+
 # nodejs - DevTinder projects
 
 	### Tech stack - NodeJS (Express JS), MongoDB and React
@@ -74,19 +84,74 @@
 	package.json - defined the meta data of project, create via npm init, main depedecy
 	package-lock.json - lock down exact version of packages, auto generated on npm install, sub nested depedency
 
+		Sometime people not push the package-lock.json but we need to push it, As the file is used to maintain exact version of packaged with it is all depedency and it is needed for making standard across project.
+
 	> npm init - Intialised the project with some configuration details like name, description, version, author etc
 	
 ## Node modules
-
-	expressjs - installed express for the web server, listen to custom port and create different route 
-			createApp.use("/boss",(req, res) => {res.send("Hello from BOSS server");});
 
 	Every time on change of src/app.js we need to restart the server to overcome this process using nodemon package will keep watch on the file.
 
 		> npm i -g nodemon // -g used to maintain package on system level instead of project level 
 		> nodemon -L src/app.js // using -L as the docker container unable to track the filesystem events often
+
+	expressjs - light weight web framework based on nodejs (it is bulit top of nodejs, whatever application support nodejs there we can run express), make the routing, communication easier and faster
+
+		Like when we create a server with expressjs we can eaily and fastly create server without proving much information like (header, type, body etc.)
+
+		express can do manything like - Routing, Middleware, Request/Response helpers, Error handling, static file serving
 	
+	
+	installed express for the web server, listen to custom port and create different route
+
+			app.use(()=>{}) // this will work for all the incoming request 
+			createApp.use("/boss",(req, res) => {res.send("Hello from BOSS server");});
+				here anything comes after the /boss/new, /boss/11 it will execute wit work as special charcter, here squenence of code is matter
+
+				.use() it will access by all http method if the route matches
+
+				if we use route as "/" and it is placed on top everytime we get this route response for all route because it matched with all routes
+
+	As we want to call/test the http method and route we can use postman but here i am using thunder client extension for the vs code.
+
+	## Routes 
+
+		By default on browser it only support GET method
+		There are different routes with special regex, Wildcards in routing handler like ?, +, * etc 
+
+		If server dont send - res.send() the rquest will be continuous processing phase and it will stop on the server timeout, Always handle a request with appropriate return.
+
+			res.send() and next() ordering play important a role
+
+		Route handlers consist of 3 parameter like req, res and next (use to manget the multiple route handler for single route)
+
+		.use - matched the paths as prefix and ignore the http method - /rahul (/rahul/new, /rahul/create, etc)
+		.all - matches exact paths and applies to all http methods - /rahul (only /rahul not allowed /rahul/new) 
+		.get, .post etc  - will match exact route like .all
+
+		Middleware - when we create route to handle common authorization with login or token, logging and monitoring etc in route handle
+
+			In middleware work as api gateway in the webserver as we can check act accordingly
+
+		error handling - always use try and catch to handle the error gracefully also we can use the / route at the end for handling all the error grancefully
+
+			use("/", (err, req, res, next) - order of the parameter matters, if only one parater will be treated as req, if 2 req and res, if 3 then req, res and next.
+
+	For the mongodb we use mongoose npm library, it is standard, it give some boiler plate code
+
+		Only listen server when database is connection sucessfully
+
+	for reading a json data express given express-json package but now latest version support json in express library so no new package, for xml, html might be needed some parser.
+
+	created all the html method and update the code accordingly
+	Also added the try and catch module
+
+## Concepts and Features
+
+	JS Object -  JS data strcture, store and manipulate, key may or may not be in double quote, JSON.stringify() - convert JS object into JSON
+	JSON - String format, used to exchange, key must be double quotes, JSON.parse() - converts JSON to JS object
+	 
+	Data sanitization and schema validation
+
 		
-
-
 
