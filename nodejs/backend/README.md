@@ -153,5 +153,10 @@
 	 
 	Data sanitization and schema validation
 
-		
+		Existing moongoose validation and custom validation
+		Also we can use validate library to check for email, url sanitize the data
+
+	We can't add re.body directly for creating a dcoument we always need to sanitize the data
+
+	Creating a password hash for this i am using bcrypt
 

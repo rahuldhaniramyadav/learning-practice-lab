@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const validator = require('validator');
 
 // creating a common propery validator variable
 const standardString = {
@@ -16,17 +17,15 @@ const USER_STATUS = {
 }
 
 const userSchema = new mongoose.Schema({
-    firstName: {type: String, maxLength: 50, trim: true},
+    firstName: {type: String, maxLength: 60, trim: true},
     lastName: {...standardString},
-    // fullName: {
-    //     type: String, 
-    //     maxLength: 120, // overwrote the exiting property
-    //     set: function() { // set the data
-    //         return `${this.firstName || ''} ${this.lastName || ''}`.trim();
-    //     },
-    // },
-    // email: {unique: true, type: String, required: true, trim: true, maxLength: 60, lowercase: true },
-    email: {unique: true, ...standardString, lowercase: true },
+    email: {unique: true, ...standardString, lowercase: true, 
+        validate: (v) => {
+            if (!validator.isEmail(v)){
+                throw new Error("Email id is not valid");
+            }
+        } 
+    },
     password: {...standardString}, // we can add regex for the password (atleast 1 number, 1 special character)
     age: { type: Number, min: [18, "You must be 18 years old"], max: [60, 'It is time to relax']},
     status: { type: Number, enum: Object.values(USER_STATUS), default: USER_STATUS.PENDING_VERIFICATION },
@@ -50,12 +49,6 @@ const userSchema = new mongoose.Schema({
     {
     toJSON: { virtuals: true },
     toObject: { virtuals: true },
-});
-
-// it will be not shown in collection but we can access with key
-// or need to add true for virtual so it will be visible in response 
-userSchema.virtual("fullName").get(function () {
-    return `${this.firstName} ${this.lastName}`.trim();
 });
 
 const User = mongoose.model("users", userSchema);
