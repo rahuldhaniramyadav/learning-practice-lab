@@ -165,9 +165,13 @@
 	we can send cookie to the user 
 		res.cookie(<NAME>, <VALUE>, <{OPTIONS}>);
 
-	For reading the cookin we need package which is - cookie-parser 	
-	- cookie-parser, send and recieve cookie data
-	- install jwt(jsonwebtoken), create jwt token send in cookie with expiry and all
-	- check jwt in everyrequest  
+	For reading the cookin we need package which is - cookie-parser
 
+		appServer.use(cookieParser());
+		// reading the data => req.cookies 
 
+	creating (on login req) and verifyting (verifying the data) the jwttoken - we need to install jsonwebtoken
+
+	- For every request i am verifying the jwttoken, instead of checking each request of jwttoken now we can create middleware for verifying each request
+	
+	  

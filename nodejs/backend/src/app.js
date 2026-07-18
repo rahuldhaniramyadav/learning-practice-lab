@@ -9,6 +9,8 @@ const { passworBcryptdHash, passworBcryptdCompare } = require('./helpers/passwor
 const cookieParser = require('cookie-parser'); // reading cookie
 const jwt = require("jsonwebtoken"); //creating and reading jwt
 
+const {jwtTokenAuth} = require('./helpers/jwttokenauth');
+
 const appServer = express();
 
 appServer.use(express.json()); // parse/add the json data to JS object
@@ -45,10 +47,10 @@ appServer.post('/login', async (req, res) => {
             // check passowrd
             const isMatched = await passworBcryptdCompare(password, userData.password);
             if (isMatched) {
-                // sending cookie to requester
-                res.cookie('jwt', "AABBCCGCSCFSFS");
+                const jwtToken = await jwt.sign({_id: userData._id }, process.env.JWT_PRIVATE_KEY, {expiresIn:"1h"}); // creating a jwt
+                // const jwt = jwt.sign({_id: userData._id }, process.env.JWT_PRIVATE_KEY, {algorithm: 'RS256'}); // creating a jwt with RS256
                 // cookie with options
-                res.cookie('jwt', "AABBCCGCSCFSFS", {
+                res.cookie('jwttoken', jwtToken, {
                     httpOnly: true, secure: true, sameSite: 'Strict', maxAge: 24 * 60 * 60 * 1000
                 });
                 res.send("User login succesfully");
@@ -59,18 +61,20 @@ appServer.post('/login', async (req, res) => {
             res.status(403).send("Please provide correct details !!");
         }
     } catch(e) {
-        res.status(401).send("Please provide correct login details");
+        res.status(401).send("Please provide correct login details" + e.message);
     }
 });
 
 // get the profile access with cookie (reading cookie)
-appServer.post('/profile', async (req, res) => {
-    console.log(req.cookies, req.cookies?.jwt);
-    if(req.cookies?.jwt) {
-        res.send("Reading cookie jwt - " + req.cookies?.jwt);    
-    } else {
-        res.send("Failed to read cookie");
-    }
+appServer.post('/profile', jwtTokenAuth, async (req, res) => {
+    // res.send("You are authorize user " + userData.firstName);
+    res.send("You are authorize user ");
+});
+
+// get the profile access with cookie (reading cookie)
+appServer.post('/getconnectionrequest', jwtTokenAuth, async (req, res) => {
+    // res.send("You are authorize user " + userData.firstName);
+    res.send("You are authorize user ");
 });
 
 // try to fetch the fullname
