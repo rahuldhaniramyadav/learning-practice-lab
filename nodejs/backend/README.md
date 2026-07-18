@@ -158,5 +158,16 @@
 
 	We can't add re.body directly for creating a dcoument we always need to sanitize the data
 
-	Creating a password hash for this i am using bcrypt
+	Creating a password hash with bcrypt package and decrypt as well to compare the password while login
+
+	----
+
+	we can send cookie to the user 
+		res.cookie(<NAME>, <VALUE>, <{OPTIONS}>);
+
+	For reading the cookin we need package which is - cookie-parser 	
+	- cookie-parser, send and recieve cookie data
+	- install jwt(jsonwebtoken), create jwt token send in cookie with expiry and all
+	- check jwt in everyrequest  
+
 

@@ -6,10 +6,13 @@ const validator = require('validator');
 const {validateSignup} = require('./helpers/signupvalidation');
 const { sanitizeData } = require('./helpers/signupdatasanitizatation');
 const { passworBcryptdHash, passworBcryptdCompare } = require('./helpers/passwordhash');
+const cookieParser = require('cookie-parser'); // reading cookie
+const jwt = require("jsonwebtoken"); //creating and reading jwt
 
 const appServer = express();
 
 appServer.use(express.json()); // parse/add the json data to JS object
+appServer.use(cookieParser()); // reading each and every cookie from req
 
 // creating an user with validation
 appServer.post('/signup', async (req, res) => {
@@ -37,25 +40,36 @@ appServer.post('/signup', async (req, res) => {
 appServer.post('/login', async (req, res) => {
     try{
         const {email, password} = req.body;
-        // validate email 
-        // if(!validateEmail(email)) {
-            const userData = await User.findOne({email: email});
-            if (userData) {
-                // check passowrd
-                console.log("sss", password, userData.password);
-                const isMatched = await passworBcryptdCompare(password, userData.password);
-                console.log("aa", isMatched);
-                if (isMatched) {
-                    res.send("User login succesfully");
-                } else {
-                    res.status(403).send("Please provide correct details !!");
-                }
+        const userData = await User.findOne({email: email});
+        if (userData) {
+            // check passowrd
+            const isMatched = await passworBcryptdCompare(password, userData.password);
+            if (isMatched) {
+                // sending cookie to requester
+                res.cookie('jwt', "AABBCCGCSCFSFS");
+                // cookie with options
+                res.cookie('jwt', "AABBCCGCSCFSFS", {
+                    httpOnly: true, secure: true, sameSite: 'Strict', maxAge: 24 * 60 * 60 * 1000
+                });
+                res.send("User login succesfully");
             } else {
                 res.status(403).send("Please provide correct details !!");
             }
-        // }
+        } else {
+            res.status(403).send("Please provide correct details !!");
+        }
     } catch(e) {
         res.status(401).send("Please provide correct login details");
+    }
+});
+
+// get the profile access with cookie (reading cookie)
+appServer.post('/profile', async (req, res) => {
+    console.log(req.cookies, req.cookies?.jwt);
+    if(req.cookies?.jwt) {
+        res.send("Reading cookie jwt - " + req.cookies?.jwt);    
+    } else {
+        res.send("Failed to read cookie");
     }
 });
 
