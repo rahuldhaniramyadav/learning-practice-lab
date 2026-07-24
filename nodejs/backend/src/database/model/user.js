@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
+const jwt= require('jsonwebtoken');
+require('dotenv').config();
 
 // creating a common propery validator variable
 const standardString = {
@@ -45,11 +47,15 @@ const userSchema = new mongoose.Schema({
         }
     }
 }, {
-    timestamps: true,},
-    {
-    toJSON: { virtuals: true },
-    toObject: { virtuals: true },
-});
+    timestamps: true,
+}
+);
+
+userSchema.methods.jwtSign = async function() {
+    console.log("This is fucntion");
+    return "test";
+    // return await jwt.sign({_id: this._id }, process.env.JWT_PRIVATE_KEY, {expiresIn:"1h"});
+}
 
 const User = mongoose.model("users", userSchema);
 

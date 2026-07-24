@@ -12,7 +12,6 @@ const passworBcryptdHash = (pass) => {
 
 //converting hash to plain and comparing
 const passworBcryptdCompare = (pass, hash) => {
-    console.log("sss", pass, hash);
     return bcrypt.compare(pass, hash);
 }
 

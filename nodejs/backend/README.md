@@ -173,5 +173,28 @@
 	creating (on login req) and verifyting (verifying the data) the jwttoken - we need to install jsonwebtoken
 
 	- For every request i am verifying the jwttoken, instead of checking each request of jwttoken now we can create middleware for verifying each request
-	
-	  
+
+	Create a API LIST and now group them with express router, managing, testing easily, it will modular
+
+	--
+
+	Exploring devtinder
+
+	To start we need to create a account (signup) 
+
+	email - OTP
+	mobile - OTP
+
+	Name- Rahul Yadav
+	Email - prefilled (already added above, not editable)
+	Birthday - 19/06/1994
+	Gender - Man
+	checkbox - show my gender on my profile
+	Inrested in - Women - options
+	Looking for - Still figuring it out (list of options)
+	upload 2 photos
+	Interests - [interest] (list of predifed intrest)
+
+	Sexual orientation - one option to choose (list of predefined options)
+
+	Feth the all feed data - https://api.gotinder.com/v2/recs/core?l	

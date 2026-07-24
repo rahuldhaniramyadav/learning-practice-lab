@@ -8,6 +8,7 @@ const jwtTokenAuth = async (req, res, next) => {
         if(jwtTokenData?._id) {
             const userData = await User.findById(jwtTokenData?._id)
             if (userData) {
+                req.user = userData; // adding user data in req
                 next();
             } else {
                 throw new Error("Unable to fine user");
