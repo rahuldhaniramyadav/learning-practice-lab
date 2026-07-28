@@ -180,21 +180,19 @@
 
 	Exploring devtinder
 
-	To start we need to create a account (signup) 
+		To start we need to create a account (signup) 
 
-	email - OTP
-	mobile - OTP
+		email - OTP
+		mobile - OTP
 
-	Name- Rahul Yadav
-	Email - prefilled (already added above, not editable)
-	Birthday - 19/06/1994
-	Gender - Man
-	checkbox - show my gender on my profile
-	Inrested in - Women - options
-	Looking for - Still figuring it out (list of options)
-	upload 2 photos
-	Interests - [interest] (list of predifed intrest)
-
-	Sexual orientation - one option to choose (list of predefined options)
-
-	Feth the all feed data - https://api.gotinder.com/v2/recs/core?l	
+		Name- Rahul Yadav
+		Email - prefilled (already added above, not editable)
+		Birthday - 19/06/1994
+		Gender - Man
+		checkbox - show my gender on my profile
+		Inrested in - Women - options
+		Looking for - Still figuring it out (list of options)
+		upload 2 photos
+		Interests - [interest] (list of predifed intrest)
+		Sexual orientation - one option to choose (list of predefined options)
+		Feth the all feed data - https://api.gotinder.com/v2/recs/core?l	

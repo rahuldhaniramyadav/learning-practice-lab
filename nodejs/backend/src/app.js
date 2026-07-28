@@ -19,7 +19,7 @@ appServer.use(cookieParser()); // reading each and every cookie from req
 
 appServer.use('/', noAuth);
 appServer.use('/', auth);
-appServer.use('/profile', profileRouteData);
+appServer.use('/profile/', profileRouteData);
 
 // get the profile access with cookie (reading cookie)
 appServer.post('/getconnectionrequest', jwtTokenAuth, async (req, res) => {
