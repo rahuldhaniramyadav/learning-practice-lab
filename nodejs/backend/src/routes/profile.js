@@ -59,6 +59,7 @@ profileRoute.patch('/resetpassword/', jwtTokenAuth, async (req, res) => {
             if (userData) {
                 // check passowrd old password
                 const isMatched = await passworBcryptdCompare(req.body.old_password, userData.password);
+                console.log(req.body.old_password, userData.password, userData);
                 if (isMatched) {
                     // update with new password
                     const updateUserPassword = await User.findOneAndUpdate({_id: req.user._id}, {password: req.body.new_password}, { returnDocument: 'after' });

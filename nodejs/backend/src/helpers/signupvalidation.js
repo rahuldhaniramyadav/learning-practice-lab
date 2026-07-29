@@ -1,7 +1,8 @@
 const validator = require('validator');
 const {validateEmail} = require('./validateEmail');
+const checkEMail = require('./checkEmailExist');
 
-const validateSignup = (data) => {
+const validateSignup = async (data) => {
 
     try {
         // we need check wheather the mandoty fields are send by sender
@@ -24,6 +25,12 @@ const validateSignup = (data) => {
         if (emailError) {
             throw new Error(emailError);
         }
+        // added check for email is already exist
+        const isEmailExist = await checkEMail(email);
+        if (isEmailExist) {
+            throw new Error("email is already exists");
+        }
+
         if (!validator.isStrongPassword(password)) {
             throw new Error("Please create a strong password !!");
         }
@@ -41,7 +48,7 @@ const validateSignup = (data) => {
             throw new Error("You can select a maximum of 20 Skills !!");
         }
     } catch(e) {
-        throw new Error(e.message);
+        throw e;
     }
 }
 

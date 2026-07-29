@@ -11,6 +11,7 @@ const {jwtTokenAuth} = require('./helpers/jwttokenauth');
 const noAuth = require('./routes/noauth');
 const auth = require('./routes/auth');
 const profileRouteData = require('./routes/profile');
+const requestConnection = require('./routes/requestconnection');
 
 const appServer = express();
 
@@ -20,12 +21,7 @@ appServer.use(cookieParser()); // reading each and every cookie from req
 appServer.use('/', noAuth);
 appServer.use('/', auth);
 appServer.use('/profile/', profileRouteData);
-
-// get the profile access with cookie (reading cookie)
-appServer.post('/getconnectionrequest', jwtTokenAuth, async (req, res) => {
-    // res.send("You are authorize user " + userData.firstName);
-    res.send("You are authorize user ");
-});
+appServer.use('/connectionrequest/', requestConnection);
 
 // try to fetch the fullname
 appServer.post('/user', async (req, res) => {
