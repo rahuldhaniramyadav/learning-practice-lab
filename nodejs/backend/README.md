@@ -195,4 +195,6 @@
 		upload 2 photos
 		Interests - [interest] (list of predifed intrest)
 		Sexual orientation - one option to choose (list of predefined options)
-		Feth the all feed data - https://api.gotinder.com/v2/recs/core?l	
+		Feth the all feed data - https://api.gotinder.com/v2/recs/core?
+
+
